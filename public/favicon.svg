@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="4" y="10" width="56" height="42" rx="6" fill="#d6cdb4"/>
-  <rect x="10" y="16" width="44" height="28" rx="3" fill="#031007"/>
-  <text x="32" y="37" font-family="monospace" font-size="16" fill="#33ff66" text-anchor="middle">&gt;_</text>
-  <rect x="24" y="54" width="16" height="4" fill="#b3a888"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <rect width="32" height="32" fill="#008080"/>
+  <rect x="3" y="4" width="26" height="18" fill="#c0c0c0"/>
+  <rect x="3" y="4" width="26" height="3" fill="#000080"/>
+  <rect x="5" y="9" width="22" height="11" fill="#ffffff"/>
+  <rect x="5" y="9" width="22" height="11" fill="none" stroke="#808080"/>
+  <rect x="14" y="24" width="4" height="3" fill="#808080"/>
+  <rect x="10" y="27" width="12" height="2" fill="#c0c0c0"/>
 </svg>

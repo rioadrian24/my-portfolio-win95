@@ -28,7 +28,7 @@ function showFallback(reason) {
   const cards = fb.querySelector('#fallback-projects .cards');
   cards.innerHTML = content.projects.map((p) => `
     <div class="card"><h3>${p.title}</h3><p>${p.description}</p>
-    <p style="color:#ffb000;font-size:.8rem">${p.tech.join(' · ')}</p></div>`).join('');
+    <p style="color:#404040;font-size:11px">${p.tech.join(' · ')}</p></div>`).join('');
   document.title = `${content.profile.name} — Portfolio`;
 }
 
@@ -86,7 +86,7 @@ async function boot() {
     isMobile, reducedMotion,
     onZoomIn: () => {
       hintEl.classList.add('hidden');
-      computer.screenTexture.setMode('boot', ['RETRO-OS memuat...', '', 'menghubungkan sesi >_']);
+      computer.screenTexture.setMode('boot', ['WINDOWS 95 memuat...', '', 'menghubungkan sesi C:\\>_']);
       setTimeout(() => computer.screenTexture.setMode('desktop'), 3200);
       os.show();
       sound.beep(660, 0.09);
@@ -112,7 +112,7 @@ async function boot() {
     hovering = v;
     computer.screenMaterial.color.setRGB(v ? 1.35 : 1, v ? 1.35 : 1, v ? 1.35 : 1);
     canvas.style.cursor = v ? 'pointer' : 'default';
-    hintEl.textContent = v ? 'Klik untuk membuka 💻' : 'Klik monitor untuk masuk 👆';
+    hintEl.textContent = v ? 'Klik untuk membuka' : 'Klik monitor untuk masuk';
   }
 
   canvas.addEventListener('pointermove', (e) => {
