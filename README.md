@@ -41,3 +41,12 @@ ada di `index.html` (title, meta SEO, teks sr-only, fallback).
 | Light bevel | `#ffffff` |
 | Shadow bevel | `#808080` |
 | Dark bevel | `#000000` |
+
+## Kredit ikon
+
+Ikon UI (computer, folder, notepad, envelope, MS-DOS, briefcase, globe,
+recycle, settings) diambil dari
+[trapd00r/win95-winxp_icons](https://github.com/trapd00r/win95-winxp_icons),
+dikonversi dari `.ico` 32x32 ke PNG dan dirender dengan `image-rendering: pixelated`.
+Repo sumber tidak menyertakan file lisensi; ikon Windows adalah karya Microsoft
+Corporation dan dipakai di sini sebagai rujukan visual untuk tema retro.

@@ -73,7 +73,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
     sound?.beep(700, 0.04, 'square', 0.02);
   }
 
-  function open({ id, title, render, width }) {
+  function open({ id, title, render, width, icon }) {
     // kalau sudah terbuka: fokuskan (atau restore bila minimize)
     if (wins.has(id)) {
       const w = wins.get(id);
@@ -99,6 +99,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
 
     el.innerHTML = `
       <div class="os-titlebar">
+        ${icon ? `<img class="ttl-ico" src="${icon}" alt="" width="16" height="16" />` : ''}
         <span class="ttl">${title}</span>
         <button class="os-btn" data-act="min" aria-label="Minimize">_</button>
         <button class="os-btn" data-act="max" aria-label="Maximize">□</button>
@@ -110,7 +111,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
 
     const taskBtn = document.createElement('button');
     taskBtn.className = 'taskbtn';
-    taskBtn.textContent = title;
+    taskBtn.innerHTML = `${icon ? `<img class="taskbtn-ico" src="${icon}" alt="" width="16" height="16" />` : ''}<span>${title}</span>`;
     taskBtn.addEventListener('click', () => {
       const w = wins.get(id);
       if (!w) return;

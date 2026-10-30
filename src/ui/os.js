@@ -65,23 +65,23 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
   }
 
   const APPS = [
-    { id: 'about', title: 'About Me', glyph: '🖥️', render: renderAbout, width: '400px' },
-    { id: 'projects', title: 'Projects', glyph: '🗂️', render: renderProjects, width: '480px' },
-    { id: 'resume', title: 'Resume', glyph: '📄', render: renderResume, width: '400px' },
-    { id: 'contact', title: 'Contact', glyph: '✉️', render: renderContact, width: '380px' },
-    { id: 'terminal', title: 'MS-DOS Prompt', glyph: '⌨️', render: renderTerminal, width: '560px' },
+    { id: 'about', title: 'About Me', icon: 'icons/computer.png', render: renderAbout, width: '400px' },
+    { id: 'projects', title: 'Projects', icon: 'icons/folder.png', render: renderProjects, width: '480px' },
+    { id: 'resume', title: 'Resume', icon: 'icons/notepad.png', render: renderResume, width: '400px' },
+    { id: 'contact', title: 'Contact', icon: 'icons/envelope.png', render: renderContact, width: '380px' },
+    { id: 'terminal', title: 'MS-DOS Prompt', icon: 'icons/dos.png', render: renderTerminal, width: '560px' },
   ];
 
   function openApp(id) {
     const app = APPS.find((a) => a.id === id);
-    if (app) wm.open({ id: app.id, title: app.title, render: app.render, width: app.width });
+    if (app) wm.open({ id: app.id, title: app.title, icon: app.icon, render: app.render, width: app.width });
   }
 
   // ikon desktop: klik = pilih, dobel-klik = buka (perilaku 95)
   APPS.forEach((app) => {
     const b = document.createElement('button');
     b.className = 'os-icon';
-    b.innerHTML = `<span class="glyph">${app.glyph}</span><span>${app.title}</span>`;
+    b.innerHTML = `<img class="glyph-img" src="${app.icon}" alt="" width="32" height="32" /><span>${app.title}</span>`;
     b.addEventListener('click', () => {
       iconsEl.querySelectorAll('.os-icon').forEach((n) => n.classList.remove('selected'));
       b.classList.add('selected');
@@ -103,17 +103,17 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
       <div class="sm-side"><span>Windows 95</span></div>
       <div class="sm-items">
         ${APPS.map((a) => `<button class="sm-item" role="menuitem" data-app="${a.id}">
-          <span class="sm-ico">${a.glyph}</span>${a.title}</button>`).join('')}
+          <img class="sm-ico" src="${a.icon}" alt="" width="16" height="16" />${a.title}</button>`).join('')}
         <div class="sm-sep"></div>
-        <button class="sm-item" role="menuitem" data-act="sound"><span class="sm-ico">♪</span>Suara: <b id="sm-sound-state">Mati</b></button>
+        <button class="sm-item" role="menuitem" data-act="settings"><img class="sm-ico" src="icons/settings.png" alt="" width="16" height="16" />Settings: <b id="sm-sound-state">Suara mati</b></button>
         <div class="sm-sep"></div>
-        <button class="sm-item" role="menuitem" data-act="exit"><span class="sm-ico">⏻</span>Shut Down...</button>
+        <button class="sm-item" role="menuitem" data-act="exit"><img class="sm-ico" src="icons/globe.png" alt="" width="16" height="16" />Shut Down...</button>
       </div>`;
     menu.addEventListener('click', (e) => {
       const item = e.target.closest('.sm-item');
       if (!item) return;
       if (item.dataset.app) openApp(item.dataset.app);
-      else if (item.dataset.act === 'sound') toggleSound();
+      else if (item.dataset.act === 'settings') toggleSound();
       else if (item.dataset.act === 'exit') onExit();
       closeStartMenu();
     });
@@ -123,7 +123,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
 
   function openStartMenu() {
     if (!startMenu) startMenu = buildStartMenu();
-    document.getElementById('sm-sound-state').textContent = sound.enabled ? 'Nyala' : 'Mati';
+    document.getElementById('sm-sound-state').textContent = sound.enabled ? 'suara nyala' : 'suara mati';
     startMenu.classList.add('open');
     startBtn.classList.add('pressed');
     document.addEventListener('pointerdown', onDocDown, true);

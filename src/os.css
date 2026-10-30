@@ -84,13 +84,12 @@
   background: #000080;
   border: 1px dotted #ffff80;
 }
-.os-icon .glyph {
+.os-icon .glyph-img {
   width: 32px;
   height: 32px;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  line-height: 1;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .os-icon span:last-child {
   text-align: center;
@@ -147,15 +146,13 @@
   white-space: nowrap;
   padding-left: 2px;
 }
-.os-titlebar .ttl::before {
-  content: "";
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  margin-right: 4px;
-  vertical-align: -2px;
-  background: #c0c0c0;
-  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
+.os-titlebar .ttl-ico {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: block;
+  image-rendering: pixelated;
+  margin-right: 2px;
 }
 
 /* tombol judul: kotak kecil bergaya 95 */
@@ -366,6 +363,9 @@
 }
 
 .taskbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   height: 22px;
   max-width: 150px;
   min-width: 70px;
@@ -383,6 +383,13 @@
   text-align: left;
   cursor: pointer;
 }
+.taskbtn-ico {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+}
+
 .taskbtn.active {
   background-color: #c0c0c0;
   background-image: repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 2px);
@@ -481,11 +488,11 @@
   outline: none;
 }
 .sm-ico {
-  width: 18px;
-  display: inline-grid;
-  place-items: center;
-  font-size: 13px;
-  line-height: 1;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: block;
+  image-rendering: pixelated;
 }
 
 .sm-sep {
