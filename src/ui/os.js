@@ -1,5 +1,6 @@
 import { createWindowManager } from './windows.js';
 import { mountTerminal } from './terminal.js';
+import { initAdmin } from './admin.js';
 
 // Desktop mini gaya Windows 95: boot DOS, ikon desktop, taskbar, jendela konten.
 // Seluruh konten dibaca dari content.json — ganti di satu file itu saja.
@@ -17,10 +18,25 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
   let booted = false;
   let clockTimer = null;
 
-  const { profile, projects, contact, resume } = content;
+  const admin = initAdmin({
+    wm, screen, defaults: content,
+    sound,
+    onDataChanged: (fresh) => {
+      // pakai data baru tanpa reload halaman
+      Object.keys(content).forEach((k) => { delete content[k]; });
+      Object.assign(content, fresh);
+      // render ulang jendela konten yang sedang terbuka
+      ['about', 'projects', 'resume', 'contact', 'terminal'].forEach((id) => wm.close(id));
+      openApp('about');
+    },
+  });
+
+  // akses data aktif (bisa berubah setelah admin menyimpan)
+  const D = () => content;
 
   /* ---------- isi jendela ---------- */
   function renderAbout(body) {
+    const { profile } = D();
     body.innerHTML = `
       <h3>${profile.name}</h3>
       <p class="meta">${profile.role} · ${profile.location}</p>
@@ -29,6 +45,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
   }
 
   function renderProjects(body) {
+    const { projects } = D();
     body.innerHTML = `<h3>Projects (${projects.length})</h3>` + projects.map((p) => `
       <div class="proj">
         <h4>${p.title}</h4>
@@ -42,6 +59,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
   }
 
   function renderResume(body) {
+    const { profile, resume } = D();
     body.innerHTML = `
       <h3>Resume</h3>
       <p>${profile.name} — ${profile.role}</p>
@@ -52,6 +70,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
   }
 
   function renderContact(body) {
+    const { contact } = D();
     body.innerHTML = `
       <h3>Contact</h3>
       <p>${contact.note || ''}</p>
@@ -91,6 +110,24 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
     iconsEl.appendChild(b);
   });
 
+  // ikon administrator (setara Start > Run as Administrator)
+  const adminIcon = document.createElement('button');
+  adminIcon.className = 'os-icon';
+  adminIcon.innerHTML = '<img class="glyph-img" src="icons/settings.png" alt="" width="32" height="32" /><span>Administrator</span>';
+  adminIcon.addEventListener('click', () => {
+    iconsEl.querySelectorAll('.os-icon').forEach((n) => n.classList.remove('selected'));
+    adminIcon.classList.add('selected');
+    sound?.beep(600, 0.03, 'square', 0.02);
+  });
+  adminIcon.addEventListener('dblclick', () => openRunAs());
+  iconsEl.appendChild(adminIcon);
+
+  /* ---------- Run as Administrator ---------- */
+  function openRunAs() {
+    if (admin.isLoggedIn()) admin.openAdmin();
+    else admin.openLogin();
+  }
+
   /* ---------- Start menu ---------- */
   const startBtn = document.getElementById('os-start');
   let startMenu = null;
@@ -107,6 +144,8 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
         <div class="sm-sep"></div>
         <button class="sm-item" role="menuitem" data-act="settings"><img class="sm-ico" src="icons/settings.png" alt="" width="16" height="16" />Settings: <b id="sm-sound-state">Suara mati</b></button>
         <div class="sm-sep"></div>
+        <button class="sm-item" role="menuitem" data-act="runas"><img class="sm-ico" src="icons/computer.png" alt="" width="16" height="16" />Run as Administrator...</button>
+        <div class="sm-sep"></div>
         <button class="sm-item" role="menuitem" data-act="exit"><img class="sm-ico" src="icons/globe.png" alt="" width="16" height="16" />Shut Down...</button>
       </div>`;
     menu.addEventListener('click', (e) => {
@@ -114,6 +153,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
       if (!item) return;
       if (item.dataset.app) openApp(item.dataset.app);
       else if (item.dataset.act === 'settings') toggleSound();
+      else if (item.dataset.act === 'runas') openRunAs();
       else if (item.dataset.act === 'exit') onExit();
       closeStartMenu();
     });

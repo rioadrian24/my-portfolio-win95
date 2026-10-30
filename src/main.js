@@ -7,7 +7,18 @@ import { createCameraRig } from './utils/camera.js';
 import { createLoader, trackSyncTask } from './utils/loader.js';
 import { createSound } from './utils/sound.js';
 import { initOS } from './ui/os.js';
-import content from './data/content.json';
+import defaults from './data/content.json';
+import { getData, setReloadHandler } from './data/store.js';
+
+// data aktif: hasil edit admin (localStorage) atau content.json bawaan
+const content = getData(defaults);
+
+// setelah admin menyimpan, muat ulang supaya layar 3D & judul ikut data baru
+setReloadHandler(() => {
+  const os = document.getElementById('os-overlay');
+  if (os && !os.classList.contains('hidden')) return; // jendela terbuka: biar os.js yang urus
+  location.reload();
+});
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = matchMedia('(pointer: coarse)').matches || innerWidth < 768;

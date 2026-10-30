@@ -50,3 +50,42 @@ recycle, settings) diambil dari
 dikonversi dari `.ico` 32x32 ke PNG dan dirender dengan `image-rendering: pixelated`.
 Repo sumber tidak menyertakan file lisensi; ikon Windows adalah karya Microsoft
 Corporation dan dipakai di sini sebagai rujukan visual untuk tema retro.
+
+## Mode Administrator (edit data lewat web)
+
+Ada dua jalan masuk:
+
+- Start > **Run as Administrator...**
+- Dobel-klik ikon desktop **Administrator**
+
+Login: user name `administrator`, password `D1208096`
+(hanya hash SHA-256 yang tersimpan di kode, bukan password aslinya).
+
+Setelah login, terbuka editor JSON dengan tombol: Simpan, Validasi, Rapikan,
+Ekspor, Impor, Backup, Reset, Logoff. `Ctrl+S` simpan, `Ctrl+Enter` validasi.
+
+### Cara kerja penyimpanan
+
+GitHub Pages tidak punya backend, jadi data berlapis:
+
+| Lapis | Lokasi | Isi |
+|---|---|---|
+| Bawaan | `src/data/content.json` (ikut build) | dipakai kalau belum ada edit |
+| Aktif | `localStorage` key `portfolio.data.v1` | hasil edit admin |
+| Backup | `localStorage` key `portfolio.backups.v1` | snapshot, maksimal 20 |
+
+Setiap **Simpan** menyimpan kondisi data sebelum perubahan sebagai backup baru.
+Backup bisa dilihat di tombol **Backup**: Restore, Unduh, atau Hapus.
+Restore juga menyimpan kondisi saat itu sebagai backup, jadi tidak ada data hilang.
+
+Data hanya tersimpan di browser yang dipakai. Untuk menjadikan permanen di repo:
+**Ekspor** file `content.json`, lalu ganti `src/data/content.json` dan commit.
+
+### Mengganti password
+
+```bash
+./scripts/hash-password.sh "PASSWORD_BARU"
+```
+
+Ganti konstanta `ADMIN_HASH` di `src/data/store.js` dengan hasil perintah itu,
+lalu commit. Login disimpan di `sessionStorage`, jadi hilang saat tab ditutup.

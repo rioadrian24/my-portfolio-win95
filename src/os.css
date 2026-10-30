@@ -500,3 +500,109 @@
   margin: 3px 2px;
   background: linear-gradient(180deg, #808080 50%, #ffffff 50%);
 }
+
+
+/* ---------- Logon dialog (gaya 95) ---------- */
+.logon {
+  background: #c0c0c0;
+  padding: 10px;
+}
+.logon-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  margin-bottom: 10px;
+  background: #008080;
+  color: #ffffff;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+}
+.logon-title {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.logon-head .meta { color: #d0e8e8; }
+.logon-field {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.logon-field label { text-align: right; }
+.logon-field input {
+  height: 22px;
+  padding: 2px 4px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #000000;
+  background: #ffffff;
+  border: none;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  outline: none;
+}
+.logon-msg {
+  min-height: 16px;
+  margin: 4px 0 8px;
+  color: #a00000;
+  font-size: 11px;
+}
+.logon-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+/* ---------- Editor admin ---------- */
+.adm { display: flex; flex-direction: column; gap: 6px; }
+.adm-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.adm-bar .spacer { flex: 1 1 auto; }
+.adm-bar .big-btn { margin-top: 0; min-width: 0; padding: 3px 8px; font-size: 11px; }
+.adm-state {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  min-width: 120px;
+}
+.adm-state.good { color: #006000; }
+.adm-state.bad { color: #a00000; }
+.adm-edit {
+  width: 100%;
+  min-height: 46vh;
+  resize: vertical;
+  padding: 4px 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #000000;
+  background: #ffffff;
+  border: none;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  outline: none;
+  white-space: pre;
+  tab-size: 2;
+}
+.adm-foot { display: flex; justify-content: space-between; }
+
+/* ---------- Riwayat backup ---------- */
+.bk-list { display: flex; flex-direction: column; gap: 4px; max-height: 46vh; overflow-y: auto; }
+.bk-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  background: #ffffff;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  font-size: 11px;
+}
+.bk-meta { flex: 1 1 auto; }
+.bk-actions { display: flex; gap: 3px; }
+.bk-actions .big-btn { margin-top: 0; min-width: 0; padding: 2px 6px; font-size: 11px; }

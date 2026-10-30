@@ -107,7 +107,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
       </div>
       <div class="os-body"></div>`;
     const body = el.querySelector('.os-body');
-    render(body);
+    const extra = render(body);
 
     const taskBtn = document.createElement('button');
     taskBtn.className = 'taskbtn';
@@ -126,7 +126,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
     });
     taskbarEl.appendChild(taskBtn);
 
-    const win = { id, el, taskBtn, minimized: false, maximized: false, prevBox: null };
+    const win = { id, el, taskBtn, minimized: false, maximized: false, prevBox: null, beforeClose: extra?.beforeClose };
     el.querySelector('[data-act="close"]').addEventListener('click', () => close(id));
     el.querySelector('[data-act="max"]').addEventListener('click', () => toggleMaximize(win));
     el.querySelector('[data-act="min"]').addEventListener('click', () => {
@@ -147,6 +147,7 @@ export function createWindowManager({ windowsEl, taskbarEl, screenEl, sound }) {
   function close(id) {
     const w = wins.get(id);
     if (!w) return;
+    if (w.beforeClose && w.beforeClose() === false) return;
     w.el.remove();
     w.taskBtn.remove();
     wins.delete(id);
