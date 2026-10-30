@@ -248,26 +248,29 @@
 
 /* ---------- Terminal / MS-DOS prompt ---------- */
 .os-term {
-  background: #ffffff;
+  background: #000000;
   box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
   padding: 4px 6px;
   min-height: 200px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  color: #000000;
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #c0c0c0;
 }
 .os-term .out { white-space: pre-wrap; word-break: break-word; }
 .os-term .prompt-line { display: flex; gap: 4px; align-items: baseline; }
-.os-term .ps { color: #000000; font-weight: 700; }
+.os-term .ps,
+.os-term .prompt-line { color: #c0c0c0; font-family: inherit; }
+.os-term .ps { font-weight: 400; }
 .os-term input {
   flex: 1;
   min-width: 0;
   background: transparent;
   border: none;
   outline: none;
-  color: #000000;
+  color: #c0c0c0;
   font: inherit;
-  caret-color: #000000;
+  caret-color: #c0c0c0;
 }
 
 /* ---------- Scrollbar 95 ---------- */

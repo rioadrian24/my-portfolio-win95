@@ -19,7 +19,12 @@
       "demo": "https://notifora.web.id",
       "description": "WhatsApp Gateway API — kirim pesan, OTP, tagihan, dan broadcast lewat REST API. Antrian job pakai Redis + BullMQ, integrasi multi-device.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "Tailwind", "Redis", "BullMQ"],
+      "tech": [
+        "Next.js",
+        "Tailwind",
+        "Redis",
+        "BullMQ"
+      ],
       "title": "Notifora — WhatsApp Gateway API"
     },
     {
@@ -27,7 +32,12 @@
       "demo": "https://kitsora.ai.id",
       "description": "Agregator AI multi-model: satu API key, format kompatibel OpenAI, banyak provider model. Bisa dipakai di aplikasi, Cursor, Claude Code, atau agen AI apa pun. Pembayaran Rupiah.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "API Gateway", "Streaming SSE", "Billing"],
+      "tech": [
+        "Next.js",
+        "API Gateway",
+        "Streaming SSE",
+        "Billing"
+      ],
       "title": "Kitsora — Satu API untuk Banyak Model AI"
     },
     {
@@ -35,7 +45,12 @@
       "demo": "https://smartbm3.com",
       "description": "Sistem manajemen dan pembelajaran terpadu SMK Bina Mandiri Multimedia: data siswa, akademik, keuangan, dan administrasi sekolah dalam satu platform.",
       "repo": "https://github.com/rioadrian24/smartbm3.com_next",
-      "tech": ["Next.js", "Prisma", "PostgreSQL", "PM2"],
+      "tech": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "PM2"
+      ],
       "title": "Smart BM3 — Platform Sekolah Terpadu"
     },
     {
@@ -43,7 +58,11 @@
       "demo": "https://spmb.smartbm3.com",
       "description": "Sistem penerimaan murid baru: pendaftaran online, verifikasi berkas, seleksi, dan pengumuman hasil untuk SMK Bina Mandiri Multimedia Cileungsi.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "Prisma", "Form Workflow"],
+      "tech": [
+        "Next.js",
+        "Prisma",
+        "Form Workflow"
+      ],
       "title": "SPMB — Penerimaan Murid Baru Online"
     },
     {
@@ -51,7 +70,11 @@
       "demo": "https://kurikulum.smartbm3.com",
       "description": "Generator CP-TP-ATP dan modul ajar Kurikulum Merdeka. Guru menyusun capaian, tujuan pembelajaran, dan modul ajar secara terstruktur tanpa kerja manual berulang.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "AI-assisted", "Document Export"],
+      "tech": [
+        "Next.js",
+        "AI-assisted",
+        "Document Export"
+      ],
       "title": "Kurikulum — Generator Modul Ajar"
     },
     {
@@ -59,7 +82,12 @@
       "demo": "https://prakerin.smartbm3.com",
       "description": "Sistem monitoring Prakerin (PKL): pendataan tempat industri, jurnal harian siswa, bimbingan, dan laporan penilaian dalam satu dashboard.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "Prisma", "Dashboard", "Role-based"],
+      "tech": [
+        "Next.js",
+        "Prisma",
+        "Dashboard",
+        "Role-based"
+      ],
       "title": "Prakerin — Monitoring PKL Siswa"
     },
     {
@@ -67,7 +95,11 @@
       "demo": "https://smkbinamandirimultimedia.sch.id",
       "description": "Website profil sekolah: informasi program keahlian, fasilitas, berita, dan jalur pendaftaran SMK IT Cileungsi, Kabupaten Bogor.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "SEO", "Responsive"],
+      "tech": [
+        "Next.js",
+        "SEO",
+        "Responsive"
+      ],
       "title": "SMK Binamandiri Multimedia — Profil Sekolah"
     },
     {
@@ -75,12 +107,19 @@
       "demo": "https://yppmanhalulmaarif.com",
       "description": "Website profil yayasan pendidikan: profil lembaga, unit pendidikan, dan informasi program untuk wilayah Lombok Tengah.",
       "repo": "https://github.com/rioadrian24",
-      "tech": ["Next.js", "SEO", "Responsive"],
+      "tech": [
+        "Next.js",
+        "SEO",
+        "Responsive"
+      ],
       "title": "Yayasan Manhalul Ma'arif — Profil Yayasan"
     }
   ],
-  "resume": { "label": "Unduh Resume (PDF)", "url": "resume.pdf" },
+  "resume": {
+    "label": "Unduh Resume (PDF)",
+    "url": "resume.pdf"
+  },
   "terminal": {
-    "motd": "Selamat datang di RETRO-OS v1.0 — ketik 'help' untuk daftar perintah."
+    "motd": "Ketik HELP untuk daftar perintah."
   }
 }

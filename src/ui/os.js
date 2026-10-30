@@ -69,7 +69,7 @@ export function initOS({ content, sound, onExit, reducedMotion = false }) {
     { id: 'projects', title: 'Projects', glyph: '🗂️', render: renderProjects, width: '480px' },
     { id: 'resume', title: 'Resume', glyph: '📄', render: renderResume, width: '400px' },
     { id: 'contact', title: 'Contact', glyph: '✉️', render: renderContact, width: '380px' },
-    { id: 'terminal', title: 'MS-DOS Prompt', glyph: '⌨️', render: renderTerminal, width: '500px' },
+    { id: 'terminal', title: 'MS-DOS Prompt', glyph: '⌨️', render: renderTerminal, width: '560px' },
   ];
 
   function openApp(id) {

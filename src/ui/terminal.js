@@ -1,12 +1,12 @@
-// Terminal mini: prompt interaktif dengan perintah portfolio.
+// Prompt gaya MS-DOS: perintah portfolio, prompt C:\> , naskah monokrom.
 export function mountTerminal(rootEl, content, sound) {
   const { profile, projects, contact } = content;
   rootEl.innerHTML = `
-    <div class="os-term" role="log" aria-label="Terminal">
+    <div class="os-term" role="log" aria-label="MS-DOS Prompt">
       <div class="out"></div>
       <div class="prompt-line">
-        <span class="ps">guest@retro-os:~$</span>
-        <input type="text" aria-label="Perintah terminal" autocomplete="off" spellcheck="false" />
+        <span class="ps">C:\\&gt;</span>
+        <input type="text" aria-label="Perintah" autocomplete="off" spellcheck="false" />
       </div>
     </div>`;
   const out = rootEl.querySelector('.out');
@@ -17,58 +17,69 @@ export function mountTerminal(rootEl, content, sound) {
     div.className = 'out ' + cls;
     div.textContent = text;
     out.appendChild(div);
-    const scroller = rootEl.querySelector('.os-body');
-    if (scroller) scroller.scrollTop = scroller.scrollHeight;
+    const scroller = rootEl.closest('.os-body') || rootEl;
+    scroller.scrollTop = scroller.scrollHeight;
   }
 
   const cmds = {
     help() {
-      print('Perintah tersedia:');
-      print('  help       tampilkan bantuan ini');
-      print('  about      tentang saya');
-      print('  projects   daftar proyek');
-      print('  contact    info kontak');
-      print('  whoami     siapa kamu?');
-      print('  date       tanggal & jam');
-      print('  clear      bersihkan layar');
+      print('Perintah yang tersedia:');
+      print('  HELP      tampilkan bantuan ini');
+      print('  DIR       daftar proyek');
+      print('  TYPE      tentang saya');
+      print('  CONTACT   info kontak');
+      print('  WHOAMI    siapa saya');
+      print('  DATE      tanggal dan jam');
+      print('  CLS       bersihkan layar');
     },
-    about() {
-      print(`${profile.name} — ${profile.role}`);
-      print(profile.bio);
-      print(`Lokasi: ${profile.location}`);
-    },
-    projects() {
-      projects.forEach((p, i) => {
-        print(`[${i + 1}] ${p.title}`);
-        print(`    ${p.description}`);
-        print(`    tech: ${p.tech.join(', ')}`);
+    dir() {
+      print(` Volume in drive C is PORTFOLIO`);
+      print(` Directory of C:\\PROJECTS`);
+      print('');
+      projects.forEach((p) => {
+        print(`  ${p.title.padEnd(42)} ${p.tech.join(', ')}`);
       });
+      print('');
+      print(`  ${projects.length} file(s)`);
+    },
+    type() {
+      print(`${profile.name}`);
+      print(`${profile.role} - ${profile.location}`);
+      print('');
+      print(profile.bio);
     },
     contact() {
-      print(`Email    : ${contact.email}`);
-      print(`GitHub   : ${contact.github}`);
-      print(`LinkedIn : ${contact.linkedin}`);
+      print(`EMAIL  : ${contact.email}`);
+      print(`GITHUB : ${contact.github}`);
+      print(`LINKED : ${contact.linkedin}`);
     },
-    whoami() { print('guest — pengunjung yang penasaran. Bagus.'); },
+    whoami() { print('guest - pengunjung yang penasaran.'); },
     date() { print(new Date().toString()); },
-    clear() { out.innerHTML = ''; },
+    cls() { out.innerHTML = ''; },
+    about: 'type',
+    projects: 'dir',
+    clear: 'cls',
   };
 
-  print(content.terminal?.motd || "Ketik 'help' untuk mulai.");
+  print('Microsoft(R) Windows 95');
+  print('   (C)Copyright Microsoft Corp 1981-1995.');
+  print('');
+  print(content.terminal?.motd || "Ketik HELP untuk daftar perintah.");
+  print('');
 
   input.addEventListener('keydown', (e) => {
     sound?.keyClick();
     if (e.key !== 'Enter') return;
-    const raw = input.value.trim();
+    const raw = input.value;
     input.value = '';
-    print(`guest@retro-os:~$ ${raw}`);
-    if (!raw) return;
-    const [cmd] = raw.toLowerCase().split(/\s+/);
-    if (cmds[cmd]) cmds[cmd]();
-    else print(`perintah tidak dikenal: ${cmd}  (coba 'help')`);
+    print(`C:\\>${raw}`);
+    const key = raw.trim().toLowerCase().split(/\s+/)[0];
+    if (!key) return;
+    const resolved = typeof cmds[key] === 'string' ? cmds[cmds[key]] : cmds[key];
+    if (resolved) resolved();
+    else print(`Bad command or file name: ${key}`);
   });
 
-  // klik area terminal -> fokus ke input
   rootEl.querySelector('.os-term').addEventListener('click', () => input.focus());
   setTimeout(() => input.focus(), 300);
 }
