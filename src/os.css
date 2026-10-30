@@ -128,7 +128,7 @@
   gap: 2px;
   height: 18px;
   padding: 0 2px 0 3px;
-  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  background: #000080;
   color: #ffffff;
   font-weight: 700;
   font-size: 11px;
@@ -137,8 +137,8 @@
   flex: 0 0 auto;
 }
 .os-window.inactive .os-titlebar {
-  background: linear-gradient(90deg, #808080 0%, #b5b5b5 100%);
-  color: #d4d0c8;
+  background: #808080;
+  color: #c0c0c0;
 }
 .os-titlebar .ttl {
   flex: 1;
@@ -437,7 +437,7 @@
 
 .sm-side {
   width: 22px;
-  background: linear-gradient(180deg, #000080 0%, #1084d0 100%);
+  background: #000080;
   display: flex;
   align-items: flex-end;
   justify-content: center;
