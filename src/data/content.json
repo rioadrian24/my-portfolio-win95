@@ -1,0 +1,86 @@
+{
+  "contact": {
+    "email": "rioadrian646@gmail.com",
+    "github": "https://github.com/rioadrian24",
+    "linkedin": "https://linkedin.com/in/rioadrian24",
+    "note": "TERBUKA UNTUK KOLABORASI"
+  },
+  "profile": {
+    "avatarEmoji": "🧑‍💻",
+    "bio": "Guru SMK bidang RPL/PPLG sekaligus fullstack web developer. Membangun dan mengoperasikan produk web produksi sendiri — dari gateway WhatsApp, agregator AI, sistem informasi sekolah, sampai platform kurikulum. Fokus pada Next.js, Prisma, Redis/BullMQ, dan deployment di server sendiri. Ke depannya membangun aplikasi SaaS yang bermanfaat dan sistem pendidikan digital yang inovatif.",
+    "location": "Cileungsi, Kab. Bogor, Indonesia",
+    "name": "Rio Adrian Maulana Gymnastiar, S.Kom",
+    "role": "Software Engineering Teacher & Fullstack Developer",
+    "tagline": "INOVASI, EKSPLORASI, BELAJAR TANPA HENTI"
+  },
+  "projects": [
+    {
+      "accent": "#33ff66",
+      "demo": "https://notifora.web.id",
+      "description": "WhatsApp Gateway API — kirim pesan, OTP, tagihan, dan broadcast lewat REST API. Antrian job pakai Redis + BullMQ, integrasi multi-device.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "Tailwind", "Redis", "BullMQ"],
+      "title": "Notifora — WhatsApp Gateway API"
+    },
+    {
+      "accent": "#a855f7",
+      "demo": "https://kitsora.ai.id",
+      "description": "Agregator AI multi-model: satu API key, format kompatibel OpenAI, banyak provider model. Bisa dipakai di aplikasi, Cursor, Claude Code, atau agen AI apa pun. Pembayaran Rupiah.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "API Gateway", "Streaming SSE", "Billing"],
+      "title": "Kitsora — Satu API untuk Banyak Model AI"
+    },
+    {
+      "accent": "#ffb000",
+      "demo": "https://smartbm3.com",
+      "description": "Sistem manajemen dan pembelajaran terpadu SMK Bina Mandiri Multimedia: data siswa, akademik, keuangan, dan administrasi sekolah dalam satu platform.",
+      "repo": "https://github.com/rioadrian24/smartbm3.com_next",
+      "tech": ["Next.js", "Prisma", "PostgreSQL", "PM2"],
+      "title": "Smart BM3 — Platform Sekolah Terpadu"
+    },
+    {
+      "accent": "#33ccff",
+      "demo": "https://spmb.smartbm3.com",
+      "description": "Sistem penerimaan murid baru: pendaftaran online, verifikasi berkas, seleksi, dan pengumuman hasil untuk SMK Bina Mandiri Multimedia Cileungsi.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "Prisma", "Form Workflow"],
+      "title": "SPMB — Penerimaan Murid Baru Online"
+    },
+    {
+      "accent": "#00e5a0",
+      "demo": "https://kurikulum.smartbm3.com",
+      "description": "Generator CP-TP-ATP dan modul ajar Kurikulum Merdeka. Guru menyusun capaian, tujuan pembelajaran, dan modul ajar secara terstruktur tanpa kerja manual berulang.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "AI-assisted", "Document Export"],
+      "title": "Kurikulum — Generator Modul Ajar"
+    },
+    {
+      "accent": "#ff6b35",
+      "demo": "https://prakerin.smartbm3.com",
+      "description": "Sistem monitoring Prakerin (PKL): pendataan tempat industri, jurnal harian siswa, bimbingan, dan laporan penilaian dalam satu dashboard.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "Prisma", "Dashboard", "Role-based"],
+      "title": "Prakerin — Monitoring PKL Siswa"
+    },
+    {
+      "accent": "#4ade80",
+      "demo": "https://smkbinamandirimultimedia.sch.id",
+      "description": "Website profil sekolah: informasi program keahlian, fasilitas, berita, dan jalur pendaftaran SMK IT Cileungsi, Kabupaten Bogor.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "SEO", "Responsive"],
+      "title": "SMK Binamandiri Multimedia — Profil Sekolah"
+    },
+    {
+      "accent": "#f472b6",
+      "demo": "https://yppmanhalulmaarif.com",
+      "description": "Website profil yayasan pendidikan: profil lembaga, unit pendidikan, dan informasi program untuk wilayah Lombok Tengah.",
+      "repo": "https://github.com/rioadrian24",
+      "tech": ["Next.js", "SEO", "Responsive"],
+      "title": "Yayasan Manhalul Ma'arif — Profil Yayasan"
+    }
+  ],
+  "resume": { "label": "Unduh Resume (PDF)", "url": "resume.pdf" },
+  "terminal": {
+    "motd": "Selamat datang di RETRO-OS v1.0 — ketik 'help' untuk daftar perintah."
+  }
+}

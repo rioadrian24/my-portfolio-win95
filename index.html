@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rio Adrian Maulana Gymnastiar — Portfolio</title>
+  <meta name="description" content="Guru SMK RPL/PPLG dan fullstack web developer. Membangun gateway WhatsApp, agregator AI, sistem informasi sekolah, dan platform kurikulum — semuanya berjalan di server produksi sendiri." />
+  <meta name="author" content="Rio Adrian Maulana Gymnastiar" />
+  <meta name="theme-color" content="#0a0f0a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rio Adrian Maulana Gymnastiar — Portfolio" />
+  <meta property="og:description" content="Guru SMK RPL/PPLG dan fullstack web developer. Membangun gateway WhatsApp, agregator AI, sistem informasi sekolah, dan platform kurikulum — semuanya berjalan di server produksi sendiri." />
+  <meta property="og:image" content="./og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rio Adrian Maulana Gymnastiar — Portfolio" />
+  <meta name="twitter:description" content="Guru SMK RPL/PPLG dan fullstack web developer. Membangun gateway WhatsApp, agregator AI, sistem informasi sekolah, dan platform kurikulum — semuanya berjalan di server produksi sendiri." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <link rel="stylesheet" href="./src/os.css" />
+</head>
+<body>
+  <!-- Konten teks tersembunyi: dibaca SEO & screen reader walau pengalaman utama 3D -->
+  <div class="sr-only" aria-label="Tentang Rio Adrian Maulana Gymnastiar">
+    <h1>Rio Adrian Maulana Gymnastiar — Software Engineering Teacher & Fullstack Developer</h1>
+    <p>Guru SMK RPL/PPLG dan fullstack web developer. Membangun gateway WhatsApp, agregator AI, sistem informasi sekolah, dan platform kurikulum — semuanya berjalan di server produksi sendiri.</p>
+    <h2>Proyek</h2>
+    <ul>
+      <li>Notifora — WhatsApp Gateway API</li>
+      <li>Kitsora — Agregator AI multi-model</li>
+      <li>Smart BM3 — Platform sekolah terpadu</li>
+      <li>SPMB — Penerimaan murid baru online</li>
+    </ul>
+    <h2>Kontak</h2>
+    <p>Email: rioadrian646@gmail.com · GitHub: rioadrian24</p>
+  </div>
+
+  <!-- Layar loading -->
+  <div id="loading" role="status" aria-live="polite">
+    <div class="loader-box">
+      <div class="loader-title">MICROSOFT WINDOWS 95<span class="blink">_</span></div>
+      <div class="loader-bar"><div id="loader-fill"></div></div>
+      <div id="loader-text">Memuat ruangan...</div>
+    </div>
+  </div>
+
+  <!-- Kanvas 3D -->
+  <canvas id="scene" aria-label="Ruangan 3D dengan komputer tua. Klik monitor untuk membuka desktop portfolio."></canvas>
+  <div id="hint" class="hidden">Klik monitor untuk masuk</div>
+
+  <!-- Overlay OS mini (muncul saat kamera zoom ke layar) -->
+  <div id="os-overlay" class="hidden" role="dialog" aria-label="Desktop portfolio Windows 95" aria-modal="false">
+    <div id="os-screen">
+      <div id="os-crt"></div><!-- efek CRT: scanlines, vignette, flicker -->
+      <div id="os-boot" class="hidden"></div>
+      <div id="os-desktop" class="hidden">
+        <div id="os-icons"></div>
+        <div id="os-windows"></div>
+        <div id="os-taskbar">
+          <button id="os-start" title="Start">Start</button>
+          <div id="os-taskbar-windows"></div>
+          <div class="spacer"></div>
+          <div id="os-tray"><div id="os-clock" aria-label="Jam">--:--</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fallback: jika WebGL tidak tersedia / perangkat lemah -->
+  <div id="fallback" class="hidden">
+    <header>
+      <h1>Rio Adrian Maulana Gymnastiar</h1>
+      <p class="role">Software Engineering Teacher & Fullstack Developer</p>
+      <p class="bio">Guru SMK RPL/PPLG dan fullstack web developer. Membangun gateway WhatsApp, agregator AI, sistem informasi sekolah, dan platform kurikulum — semuanya berjalan di server produksi sendiri.</p>
+    </header>
+    <main>
+      <section id="fallback-projects"><h2>Proyek</h2><div class="cards"></div></section>
+      <section id="fallback-contact">
+        <h2>Kontak</h2>
+        <p><a href="mailto:rioadrian646@gmail.com">rioadrian646@gmail.com</a></p>
+        <p><a href="https://github.com/rioadrian24" target="_blank" rel="noopener">GitHub</a> ·
+           <a href="https://rioadrian24.github.io/my-portfolio/" target="_blank" rel="noopener">Portfolio</a></p>
+        <p><a class="btn" href="https://github.com/rioadrian24" target="_blank" rel="noopener">Lihat GitHub</a></p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

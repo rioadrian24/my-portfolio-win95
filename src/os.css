@@ -1,0 +1,492 @@
+/* ============================================================
+   Windows 95 theme — os.css
+   Chrome kotak: bevel 4-lapis, tanpa rounded, tanpa blur shadow.
+   ============================================================ */
+
+#os-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  opacity: 0;
+  transition: opacity .25s linear;
+}
+#os-overlay.show { opacity: 1; }
+
+#os-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #008080;
+  font-family: Tahoma, Geneva, Verdana, "MS Sans Serif", sans-serif;
+  font-size: 12px;
+  color: #000000;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: none;
+}
+
+/* CRT layer dimatikan: era 95 UI-nya bersih */
+#os-crt { display: none; }
+
+/* ---------- Boot ---------- */
+#os-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  padding: 16px;
+  background: #000000;
+  color: #c0c0c0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+#os-boot .ok { color: #ffffff; }
+#os-boot .warn { color: #a8a8a8; }
+
+/* ---------- Desktop ---------- */
+#os-desktop { position: absolute; inset: 0; z-index: 10; }
+
+#os-icons {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.os-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 80px;
+  padding: 4px 2px;
+  background: none;
+  border: 1px dotted transparent;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.os-icon:hover { background: rgba(0, 0, 128, .22); }
+.os-icon:focus-visible { outline: 1px dotted #ffffff; outline-offset: -1px; }
+.os-icon.selected {
+  background: #000080;
+  border: 1px dotted #ffff80;
+}
+.os-icon .glyph {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  line-height: 1;
+}
+.os-icon span:last-child {
+  text-align: center;
+  padding: 1px 2px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .6);
+}
+.os-icon.selected span:last-child { text-shadow: none; }
+
+/* ---------- Jendela ---------- */
+#os-windows {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.os-window {
+  position: absolute;
+  min-width: 300px;
+  max-width: 760px;
+  background: #c0c0c0;
+  border: none;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  color: #000000;
+}
+
+.os-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 18px;
+  padding: 0 2px 0 3px;
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11px;
+  cursor: default;
+  user-select: none;
+  flex: 0 0 auto;
+}
+.os-window.inactive .os-titlebar {
+  background: linear-gradient(90deg, #808080 0%, #b5b5b5 100%);
+  color: #d4d0c8;
+}
+.os-titlebar .ttl {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 2px;
+}
+.os-titlebar .ttl::before {
+  content: "";
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 4px;
+  vertical-align: -2px;
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
+}
+
+/* tombol judul: kotak kecil bergaya 95 */
+.os-btn {
+  width: 16px;
+  height: 14px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: #c0c0c0;
+  color: #000000;
+  border: none;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.os-btn:active {
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080, inset -2px -2px 0 #c0c0c0;
+  padding: 1px 0 0 1px;
+}
+
+.os-body {
+  padding: 8px;
+  font-size: 12px;
+  line-height: 1.45;
+  max-height: 62vh;
+  overflow-y: auto;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  margin-top: 3px;
+  color: #000000;
+}
+.os-window.maximized .os-body { max-height: none; height: calc(100% - 26px); }
+
+.os-body h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #808080;
+}
+.os-body h4 { font-size: 12px; font-weight: 700; margin: 0 0 2px; }
+.os-body p { margin: 0 0 6px; }
+.os-body a { color: #0000ee; text-decoration: underline; }
+.os-body a:visited { color: #551a8b; }
+.os-body .meta { color: #404040; font-size: 11px; }
+.os-body b { font-weight: 700; }
+
+/* kartu proyek: kotak sunken putih */
+.proj {
+  background: #ffffff;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  padding: 6px 8px;
+  margin: 6px 0;
+}
+.proj .tech {
+  color: #404040;
+  font-size: 11px;
+  margin: 2px 0 4px;
+}
+.proj .links a { margin-right: 10px; font-size: 11px; }
+
+.big-btn {
+  display: inline-block;
+  min-width: 90px;
+  margin-top: 6px;
+  padding: 3px 10px;
+  background: #c0c0c0;
+  color: #000000;
+  border: none;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  font-family: inherit;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.big-btn:active {
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080, inset -2px -2px 0 #c0c0c0;
+  padding: 4px 9px 2px 11px;
+}
+
+/* ---------- Terminal / MS-DOS prompt ---------- */
+.os-term {
+  background: #ffffff;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  padding: 4px 6px;
+  min-height: 200px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #000000;
+}
+.os-term .out { white-space: pre-wrap; word-break: break-word; }
+.os-term .prompt-line { display: flex; gap: 4px; align-items: baseline; }
+.os-term .ps { color: #000000; font-weight: 700; }
+.os-term input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #000000;
+  font: inherit;
+  caret-color: #000000;
+}
+
+/* ---------- Scrollbar 95 ---------- */
+.os-body::-webkit-scrollbar,
+.os-term::-webkit-scrollbar,
+#fallback::-webkit-scrollbar { width: 16px; height: 16px; }
+.os-body::-webkit-scrollbar-track,
+.os-term::-webkit-scrollbar-track,
+#fallback::-webkit-scrollbar-track {
+  background-color: #dfdfdf;
+  background-image:
+    linear-gradient(45deg, #ffffff 25%, transparent 25%),
+    linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ffffff 75%),
+    linear-gradient(-45deg, transparent 75%, #ffffff 75%);
+  background-size: 2px 2px;
+  background-position: 0 0, 0 1px, 1px -1px, -1px 0;
+}
+.os-body::-webkit-scrollbar-thumb,
+.os-term::-webkit-scrollbar-thumb,
+#fallback::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+}
+.os-body::-webkit-scrollbar-button:single-button,
+.os-term::-webkit-scrollbar-button:single-button {
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  height: 16px;
+  width: 16px;
+}
+
+/* ---------- Taskbar ---------- */
+#os-taskbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 30px;
+  padding: 2px 2px 2px 2px;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px 0 #ffffff;
+  font-size: 12px;
+  color: #000000;
+}
+#os-taskbar .spacer { flex: 1; }
+
+#os-start {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  background: #c0c0c0;
+  color: #000000;
+  border: none;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+#os-start { padding: 0 8px 0 4px; }
+#os-start::before {
+  content: "";
+  width: 16px;
+  height: 15px;
+  background: linear-gradient(90deg, #ff0000 0 50%, #00a000 50% 100%);
+  box-shadow: inset 0 0 0 1px #000000, 1px 1px 0 #808080;
+}
+#os-start:active, #os-start.pressed {
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080, inset -2px -2px 0 #c0c0c0;
+}
+#os-start.pressed {
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080, inset -2px -2px 0 #c0c0c0;
+}
+
+#os-taskbar-windows {
+  display: flex;
+  gap: 3px;
+  flex: 0 1 auto;
+  overflow: hidden;
+}
+
+.taskbtn {
+  height: 22px;
+  max-width: 150px;
+  min-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 6px;
+  background: #c0c0c0;
+  color: #000000;
+  border: none;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  font-family: inherit;
+  font-size: 11px;
+  text-align: left;
+  cursor: pointer;
+}
+.taskbtn.active {
+  background-color: #c0c0c0;
+  background-image: repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 2px);
+  font-weight: 700;
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080, inset -2px -2px 0 #c0c0c0;
+}
+
+#os-tray {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  padding: 0 2px;
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff;
+  flex: 0 0 auto;
+}
+
+#os-clock {
+  min-width: 56px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 11px;
+  color: #000000;
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #os-overlay { transition: none; }
+}
+
+
+/* ---------- Start menu ---------- */
+#os-startmenu {
+  position: absolute;
+  left: 2px;
+  bottom: 30px;
+  margin-bottom: -3px;
+  z-index: 60;
+  display: none;
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080, inset 2px 2px 0 #c0c0c0;
+  padding: 3px;
+}
+#os-startmenu.open { display: flex; }
+
+.sm-side {
+  width: 22px;
+  background: linear-gradient(180deg, #000080 0%, #1084d0 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+.sm-side span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.sm-items {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+  padding-left: 2px;
+}
+
+.sm-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  padding: 0 8px 0 4px;
+  background: none;
+  border: none;
+  color: #000000;
+  font-family: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.sm-item:hover,
+.sm-item:focus-visible {
+  background: #000080;
+  color: #ffffff;
+  outline: none;
+}
+.sm-ico {
+  width: 18px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.sm-sep {
+  height: 2px;
+  margin: 3px 2px;
+  background: linear-gradient(180deg, #808080 50%, #ffffff 50%);
+}
